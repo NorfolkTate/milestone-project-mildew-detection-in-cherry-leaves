@@ -1,42 +1,3 @@
-# ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-## Template Instructions
-
-Welcome,
-
-This is the Code Institute student template for the Cherry Leaves project option in Predictive Analytics. We have preinstalled all of the tools you need to get started. It's perfectly okay to use this template as the basis for your project submissions. Click the `Use this template` button above to get started.
-
-You can safely delete the Template Instructions section of this README.md file and modify the remaining paragraphs for your own project. Please do read the Template Instructions at least once, though! It contains some important information about the IDE and the extensions we use.
-
-## How to use this repo
-
-1. Use this template to create your GitHub project repo
-
-1. In your newly created repo click on the green Code button. 
-
-1. Then, from the Codespaces tab, click Create codespace on main.
-
-1. Wait for the workspace to open. This can take a few minutes.
-
-1. Open a new terminal and `pip3 install -r requirements.txt`
-
-1. Open the jupyter_notebooks directory, and click on the notebook you want to open.
-
-1. Click the kernel button and choose Python Environments.
-
-Note that the kernel says Python 3.12.1 as it inherits from the workspace, so it will be Python-3.12.1 as installed by Codespaces. To confirm this, you can use `! python --version` in a notebook code cell.
-
-## Cloud IDE Reminders
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, then you can create a new one with _Regenerate API Key_.
 
 ## Dataset Content
 
@@ -52,13 +13,25 @@ To save time in this process, the IT team suggested an ML system that detects in
 - 1 - The client is interested in conducting a study to visually differentiate a healthy cherry leaf from one with powdery mildew.
 - 2 - The client is interested in predicting if a cherry leaf is healthy or contains powdery mildew.
 
+
+
 ## Hypothesis and how to validate?
 
-- List here your project hypothesis(es) and how you envision validating it (them).
+* Hypothesis 1:
+The visual characteristics of healthy cherry leaves differ significantly from those affected by powdery mildew and can be quantitatively analyzed.
+* Validation: I will use image analysis techniques, such as average images, variability images, and difference plots, to highlight distinguishable features. Image montages will be used for side-by-side comparisons.
+
+Hypothesis 2:
+* A convolutional neural network trained on labeled leaf images can classify new leaf samples with up to 97% accuracy.
+* Validation: I will evaluate model performance using accuracy, precision, recall, F1-score, and a confusion matrix. I will compare test results to the target threshold of 97%.
 
 ## The rationale to map the business requirements to the Data Visualisations and ML tasks
 
-- List your business requirements and a rationale to map them to the Data Visualisations and ML tasks.
+Conduct a visual study to differentiate between healthy and mildew-infected cherry leaves.
+
+Build an automated system that can predict whether a cherry leaf is healthy or contains powdery mildew.
+
+These requirements stem from a real business challenge faced by Farmy & Foods. Their current inspection process is manual and time-consuming, taking up to 30 minutes per tree. By developing an automated image classification system, the company hopes to save time, reduce costs, and maintain product quality across its extensive network of cherry farms.
 
 ## ML Business Case
 
