@@ -126,13 +126,47 @@ Key design considerations:
 
 ## Credits
 
+
 ### Credits in Code
+* Notebook 1
+    - Kaggle
+* Notebook 2
+    - 1 - https://realpython.com/image-processing-with-the-python-pillow-library/
+    - 2 - https://matplotlib.org/stable/tutorials/images.html
+    - 3 - https://stackoverflow.com/questions/52214776/python-matplotlib-differences-between-subplot-and-subplots
+    - 4 - https://stackoverflow.com/questions/72772666/get-the-average-color-of-an-image-before-it-loads-on-the-page
+    - 5 - https://www.geeksforgeeks.org/matplotlib-pyplot-figure-in-python/
+    - 5 - https://www.scaler.com/topics/matplotlib/introduction-to-figures-in-matplotlib/
+    - 6 - https://www.mathworks.com/help//releases/R2021a/matlab/ref/imshow.html#:~:text=imshow(%20I%20)%20displays%20the%20grayscale,vector%2C%20%5Blow%20high%5D%20.
+* Notebook 3 
+    - 1 - https://stackoverflow.com/questions/60675066/why-is-the-raw-file-path-not-working-in-python
+    - 2 - https://docs.python.org/3/library/os.path.html
+    - 3 - https://www.geeksforgeeks.org/how-to-do-train-test-split-using-sklearn-in-python/
+* Notebook 4
+    - 1 - https://stackoverflow.com/questions/41175401/what-is-a-batch-in-tensorflow
+    - 2 - https://keras.io/api/data_loading/image/
+    - 3 - https://www.reddit.com/r/learnmachinelearning/comments/11m0tyy/what_exactly_is_happening_when_i_dont_normalize/?rdt=59010
+    - 3 - https://stackoverflow.com/questions/33610825/normalization-in-image-processing
+    - 4 - https://forums.fast.ai/t/normalizing-images-with-a-lambda-instead-of-stats-latest-efficientnet-requiires-it/62441
+    - 5 - https://www.reddit.com/r/deeplearning/comments/iov9qy/proper_use_of_tensorflow_dataset_prefetch_and/
+    - 6 - https://colab.research.google.com/github/csoren66/Potato_disease_Detection/blob/main/Potato_disease_detection.ipynb#scrollTo=dTStMzu6wAhH
+https://viso.ai/computer-vision/image-classification/#:~:text=Today%2C%20the%20use%20of%20convolutional,What%20Is%20Image%20Classification%3F
+    - 7 - https://www.tensorflow.org/guide/keras/serialization_and_saving
+    - 8 - https://docs.python.org/3/library/pickle.html
+* Notebook 5 
+    - 1 - https://stackoverflow.com/questions/59840289/model-evaluate-in-keras
+    - 2 - https://discuss.pytorch.org/t/how-to-plot-train-and-validation-accuracy-graph/105524
 
 ### Content
 
 - Project brief and provided by Code Institute.
 - CNN architecture inspired by Keras tutorials.
 - Streamlit multipage functionality adapted from Code Institute Malaria walkthrough
+- TensorFlow tutorial
+- Keras documentation for saving the model
+- The general use of Shutil module in python was helpfully explained via geeks for geeks
+- Stack overflow provided great information on spliting data into 3 groups
+- The general idea of scikit-learns train_test_split function was helpfully explained via geeks for geeks
 
 ### Media
 - All images used are from the Kaggle cherry leaf dataset.
