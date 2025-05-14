@@ -1,0 +1,9 @@
+outputs/models/
+outputs/images/
+inputs/dataset/
+
+__pycache__/
+*.pyc
+.DS_Store
+*.ipynb_checkpoints/
+venv/
