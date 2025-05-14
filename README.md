@@ -98,8 +98,20 @@ Key design considerations:
 - Manual testing of image uploads and predictions.
 
 ## Known Bugs and Limitations
+indentation error
+forgetting to cntrl s so commit messages were haphazard
+Didn't understand whether to import libraries for each notebook so sometimes they're imported more than once
+Various ways to split data and v confusing 
+TensorFlow not downloading - windows error due to vs code Enable Long Paths on Windows
+Reloading vscode and being back in my old repo
+is there a difference between !pip and pip
+spelling in normalize/normalise 
+didn't import layers
+saved at h5 changed to keras
+removing large files added to gitignore
 
 ## Further Improvements
+
 
 ## Deployment
 
