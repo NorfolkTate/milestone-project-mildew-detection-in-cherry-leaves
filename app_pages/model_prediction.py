@@ -6,7 +6,11 @@ from src.model_management import load_model_cached, CLASS_NAMES, IMG_SIZE
 
 def show():
     st.header("Predict Leaf Infection")
-    file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
+    file = st.file_uploader("Upload a leaf image", type=["jpg", "jpeg", "png"])
+
+    if file is None:
+        st.info("Please upload an image to continue.")
+        return
 
     img = load_image_file(file)
     st.image(img, caption="Uploaded image", use_column_width=True)
@@ -15,6 +19,9 @@ def show():
     x = preprocess_input(img_resized)
 
     model = load_model_cached()
+    if model is None:
+        st.error("Model not found. Place it at `outputs/models/cherry_leaf_model.keras`.")
+        return
 
     probs = model.predict(x, verbose=0)
     if probs.ndim == 1:
