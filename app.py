@@ -1,5 +1,7 @@
 import streamlit as st
 from app_pages import home, model_prediction, visualiser, model_performance
+import sys
+
 
 st.set_page_config(page_title="Cherry Leaf Mildew Detector", layout="wide")
 
