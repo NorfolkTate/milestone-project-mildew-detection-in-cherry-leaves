@@ -2,7 +2,7 @@ from pathlib import Path
 import streamlit as st
 
 CLASS_NAMES = ("healthy", "powdery_mildew")
-IMG_SIZE = (128, 128)
+IMG_SIZE = (256, 256)
 MODEL_PATH = Path("outputs/models/cherry_leaf_model.keras")
 
 @st.cache_resource
