@@ -52,3 +52,26 @@ def show():
     except Exception as e:
         st.error("Error while rendering visualiser page.")
         st.exception(e)
+
+    st.subheader("Analysis and Conclusions")
+
+    st.markdown("""
+        - **Image counts**: By comparing the number of images across classes and dataset
+          splits (train/val/test), we can confirm whether the dataset is balanced.
+          A balanced dataset reduces the risk of bias in the model.
+        
+        - **Sample images**: Visualising leaf samples helps confirm that the images are
+          correctly labelled and that mildew is clearly and visibly different from healthy leaves
+                
+        - **Implication for the model**: If one class has noticeably fewer images, the
+          model may overfit to the majority class. This means predictions could become
+          biased, e.g. the model might predict "healthy" too often simply because it has
+          seen more healthy examples.  
+
+          In future improvements, **data augmentation** (generating extra training
+          images by flipping, rotating, or adjusting brightness/contrast of existing
+          samples) could artificially increase the variety and count of the minority
+          class. Alternatively, **resampling techniques** could be used to help
+          the model train on a more balanced dataset.
+
+        """)
