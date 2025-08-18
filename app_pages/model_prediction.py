@@ -2,7 +2,8 @@ import numpy as np
 import streamlit as st
 
 from src.data_management import load_image_file, resize_input_image, preprocess_input
-from src.model_management import load_model_cached, CLASS_NAMES, IMG_SIZE
+from src.model_management import load_model_cached, CLASS_NAMES, IMG_SIZE 
+# code inspired by stackoverflow and ref. in readme
 
 def show():
     st.header("Predict Leaf Infection")
@@ -23,7 +24,7 @@ def show():
         st.error("Model not found. Place it at `outputs/models/cherry_leaf_model.keras`.")
         return
 
-    probs = None  # lassssst fix 
+    probs = None  # code inspired by stackoverflow and ref. in readme
 
     try:
         probs = model.predict(x, verbose=0)
@@ -44,6 +45,7 @@ def show():
     pred_idx = int(np.argmax(probs[0]))
     pred_label = CLASS_NAMES[pred_idx]
     confidence = float(np.max(probs[0]))
+    # code explained by NumPy documentation and ref. in readme
 
     st.success(f"This leaf is predicted to be **{pred_label}** "
                f"with {confidence:.1%} confidence.")

@@ -15,13 +15,13 @@ def show():
         st.error("No training history found. Please ensure 'outputs/models/training_history.pkl' exists.")
         return
 
-    with open(history_path, "rb") as f:
+    with open(history_path, "rb") as f: # code inspired by python documentation and geeks and geeks and ref. in readme
         history = pickle.load(f)
 
     fig, axes = plt.subplots(1, 2, figsize=(12, 4))
 
     # accuracy
-    axes[0].plot(history["accuracy"], label="Train acc")
+    axes[0].plot(history["accuracy"], label="Train acc") # code inspired by stackoverflow and ref. in readme
     axes[0].plot(history["val_accuracy"], label="Val acc")
     axes[0].set_title("Training vs Validation Accuracy")
     axes[0].set_xlabel("Epochs")

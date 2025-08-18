@@ -31,6 +31,7 @@ def show():
         ax.bar(list(counts.keys()), list(counts.values()))
         ax.set_ylabel("# images")
         st.pyplot(fig)
+        # code inspired by geeks for geeks and streamlit documentation and ref.in readme
 
         st.markdown(
         """
@@ -61,7 +62,7 @@ def show():
 
     except Exception as e:
         st.error("Error while rendering visualiser page.")
-        st.exception(e)
+        st.exception(e) # code inspired by rollbar and ref. in readme
 
     st.markdown(
     """

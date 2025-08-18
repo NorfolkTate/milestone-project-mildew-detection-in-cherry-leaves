@@ -248,6 +248,21 @@ https://viso.ai/computer-vision/image-classification/#:~:text=Today%2C%20the%20u
     - 1 - https://stackoverflow.com/questions/59840289/model-evaluate-in-keras
     - 2 - https://discuss.pytorch.org/t/how-to-plot-train-and-validation-accuracy-graph/105524
 
+#### links from credits in code 
+https://stackoverflow.com/questions/55378692/load-keras-model-and-cache-it-in-a-variable-without-having-to-reload - Keras model cache
+https://stackoverflow.com/questions/36158469/what-is-meaning-of-using-probsrange6-y - understanding and solving probs issue
+https://www.geeksforgeeks.org/deep-learning/tf-keras-models-load_model-in-tensorflow/ - keras model loading 
+https://stackoverflow.com/questions/41908379/keras-plot-training-validation-and-test-set-accuracy - plotting the accuracy and loss graphs
+https://www.geeksforgeeks.org/python/understanding-python-pickling-example/ - pickle!
+https://docs.python.org/3/library/pickle.html - pickle
+https://medium.com/@oladokedamilola7/a-beginners-guide-to-database-management-in-python-f77deb297389 - database and data management basics
+https://stackoverflow.com/questions/15320052/what-are-all-the-differences-between-src-and-data-src-attributes -SRC
+https://docs.streamlit.io/develop/api-reference/charts/st.pyplot - general understanding of plotting charts 
+https://www.geeksforgeeks.org/python/plotting-multiple-bar-charts-using-matplotlib-in-python/ - understanding plotting graphs
+https://rollbar.com/blog/what-is-except-exception-as-e-in-python/ - e as exception for try and accept
+https://discuss.pytorch.org/t/confused-about-target-label-when-using-nn-crossentropyloss/63264 - explaining and understanding issue with plotting and loss
+https://numpy.org/doc/2.2/reference/generated/numpy.argmax.html - learning and understanding argmax
+
 ### Content
 
 - Project brief and provided by Code Institute.

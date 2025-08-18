@@ -22,3 +22,5 @@ def iter_image_paths(folder: Path) -> Iterable[Path]:
     for p in folder.rglob("*"):
         if p.suffix.lower() in {".jpg", ".jpeg", ".png"}:
             yield p
+
+# code explained by medium.com and ref. in readme
