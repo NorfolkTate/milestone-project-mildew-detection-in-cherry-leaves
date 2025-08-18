@@ -17,10 +17,9 @@ def show():
         split_dir = DATA_ROOT / split
 
         if not split_dir.exists():
-            st.error(f"Split folder not found: {split_dir}")
+            st.error(f"Split foldr not found: {split_dir}")
             return
 
-        # --- Class counts ---
         counts = {}
         for cls in CLASS_NAMES:
             folder = split_dir / cls
@@ -31,7 +30,6 @@ def show():
         ax.set_ylabel("# images")
         st.pyplot(fig)
 
-        # --- Sample images ---
         st.subheader("Sample images")
         cls = st.selectbox("Class", CLASS_NAMES, key="vis_cls")
         n = st.slider("How many samples?", 4, 20, 8, step=4)
@@ -49,8 +47,8 @@ def show():
         cols = st.columns(4)
         for i, p in enumerate(paths):
             with cols[i % 4]:
-                st.image(str(p), use_column_width=True)
+                st.image(str(p), use_container_width=True)
 
     except Exception as e:
-        st.error("⚠️ Error while rendering visualiser page.")
+        st.error("Error while rendering visualiser page.")
         st.exception(e)
