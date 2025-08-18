@@ -23,14 +23,14 @@ def show():
         st.error("Model not found. Place it at `outputs/models/cherry_leaf_model.keras`.")
         return
 
-    probs = None  # define upfront so it always exists
+    probs = None  # lassssst fix 
 
     try:
         probs = model.predict(x, verbose=0)
 
         if probs.ndim == 1:
             probs = np.expand_dims(probs, 0)
-        if probs.shape[1] == 1:  # sigmoid -> two-class probs
+        if probs.shape[1] == 1:
             p1 = probs[:, 0]
             probs = np.vstack([1 - p1, p1]).T
 
@@ -38,11 +38,9 @@ def show():
         st.error("Prediction failed. Check the model input size and preprocessing.")
         st.code(str(e))
 
-    # ---- only continue if probs is valid ----
     if probs is None:
         return
 
-    # Compute label + confidence
     pred_idx = int(np.argmax(probs[0]))
     pred_label = CLASS_NAMES[pred_idx]
     confidence = float(np.max(probs[0]))
@@ -50,7 +48,6 @@ def show():
     st.success(f"This leaf is predicted to be **{pred_label}** "
                f"with {confidence:.1%} confidence.")
 
-    # Probability map (just JSON, no bar chart)
     prob_map = {cls: float(p) for cls, p in zip(CLASS_NAMES, probs[0])}
     st.subheader("Class probabilities")
     st.json(prob_map)
