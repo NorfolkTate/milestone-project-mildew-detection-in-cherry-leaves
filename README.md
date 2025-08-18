@@ -3,15 +3,17 @@
 ## Contents
 - [Introduction](#introduction)
 - [Business Requirements](#business-requirements)
+- [User Stories](#user-stories)
 - [Machine Learning Business Case](#machine-learning-business-case)
 - [Hypothesis](#hypothesis)
-- [Mapping Business Requirements to Project Tasks](#mapping-business-requirements-to-project-tasks)
+- [Mapping Business Requirements to Project Tasks](#rationale-to-map-business-requirements-to-ml-tasks)
 - [Dashboard Design](#dashboard-design)
 - [Dataset Content](#dataset-content)
 - [App Features](#app-features)
 - [Testing](#testing)
 - [Known Bugs and Limitations](#known-bugs-and-limitations)
 - [Further Improvements](#further-improvements)
+- [Conclusion](#conclusion)
 - [Deployment](#deployment)
 - [Main Libraries Used](#main-libraries-used)
 - [Credits](#credits)
@@ -26,6 +28,51 @@ To save time in this process, the IT team suggested an ML system that detects in
 
 - 1 - The client is interested in conducting a study to visually differentiate a healthy cherry leaf from one with powdery mildew.
 - 2 - The client is interested in predicting if a cherry leaf is healthy or contains powdery mildew.
+
+## User Stories
+
+The project was developed using Agile methodology. User stories were written to understand and atriculate business requirements and implemented through GitHub Issues and project board (linked to the repo).
+
+### User Story 1: Simple Prediction
+**As a farmer**, I want to upload a cherry leaf photo and see whether it is healthy or infected, so that I can make quick treatment decisions in the field  
+
+**Acceptance Criteria:**  
+- I can upload `.jpg/.jpeg/.png` images.  
+- The image is resized and preprocessed automatically.  
+- The model at `outputs/models/cherry_leaf_model.keras` is loaded.  
+- A prediction (healthy or powdery_mildew) is displayed with class probabilities  
+
+---
+
+### User Story 2: Dataset View
+**As a user**, I want to view how the dataset is structured and see examples of each class, so that I can understand the data quality and balance.  
+
+**Acceptance Criteria:**  
+- I can choose a dataset split (train/val/test) from `inputs/dataset/`.  
+- A bar chart shows the number of images in each class.  
+- I can view 4–20 random sample images from either class with captions.  
+- A short explanation is provided about differences between healthy and mildew leaves.  
+
+---
+
+### User Story 3: Model Performance Check
+**As a manager**, I want to review a simple summary of model performance, so that I can trust the system before deploying it.  
+
+**Acceptance Criteria:**  
+- If `outputs/metrics.json` exists, show accuracy, precision, recall, and F1.  
+- If `outputs/y_true.npy` and `outputs/y_pred.npy` exist, show a confusion matrix.  
+- A short explanation of the confusion matrix is provided.  
+- If results are missing, a clear message is shown instead of an error.  
+
+---
+
+### User Story 4: Simple Project Overview
+**As a stakeholder**, I want to see a clear project summary and system readiness check, so that I understand what the tool does and whether it is ready to use.  
+
+**Acceptance Criteria:**  
+- The Home page explains the app functions in plain English  
+- Instructions are provided for how to use the dashboard
+
 
 ## Machine Learning Business Case
 Given the image-based nature of the problem, a binary classification model was deemed suitable. A Convolutional Neural Network (CNN) was selected for its proven effectiveness in image classification tasks.
@@ -46,16 +93,27 @@ Hypothesis 2:
 * A convolutional neural network trained on labeled leaf images can classify new leaf samples with up to 97% accuracy.
 * Validation: I will evaluate model performance using accuracy, precision, recall, F1-score, and a confusion matrix. I will compare test results to the target threshold of 97%.
 
-## The rationale to map the business requirements to the Data Visualisations and ML tasks
+### Rationale to Map Business Requirements to ML Tasks  
 
-Conduct a visual study to differentiate between healthy and mildew-infected cherry leaves.
+The key business requirement is to provide cherry growers with a reliable way of identifying powdery mildew on leaves early, in order to protect yield and reduce unnecessary chemical use. To achieve this, the following mapping between business requirements, ML tasks, and visualisations has been established:  
 
-Build an automated system that can predict whether a cherry leaf is healthy or contains powdery mildew.
+- **Business Requirement:** Detect whether a cherry leaf is healthy or infected.  
+  - **ML Task:** Binary image classification using a Convolutional Neural Network (CNN).  
+  - **Dashboard Feature:** *Predict Leaf Infection* page, where users upload an image and receive a prediction with confidence score.  
 
-These requirements stem from a real business challenge faced by Farmy & Foods. Their current inspection process is manual and time consuming, taking up to 30 minutes per tree. By developing an automated image classification system, the company hopes to save time, reduce costs, and maintain product quality across its extensive network of cherry farms.
+- **Business Requirement:** Provide transparency into how the model performs.  
+  - **ML Task:** Model evaluation through accuracy, precision, recall, and F1-score.  
+  - **Dashboard Feature:** *Model Performance* page, which presents training/validation curves, metrics from `metrics.json`, and a confusion matrix with explanations.  
+
+- **Business Requirement:** Build user trust by allowing exploration of the dataset.  
+  - **ML Task:** Not directly ML, but supports ML explainability by showing dataset balance and sample images.  
+  - **Dashboard Feature:** *Visualise Dataset* page, where users can explore class balance and random samples to understand what the model was trained on.  
+
+This alignment ensures that machine learning is not only applied (via CNN-based classification) but also directly supports the stated business objectives through interactive dashboard components.  
+
 
 ## Dashboard Design
-The dashboard was designed with clarity and business relevance in mind. Pages were structured to address each client requirement and showcase the project workflow.
+The dashboard was designed with clarity and business relevance in mind. Pages were structured to address each client requirement and showcase the project workflow. These are demonstrated by the user stories designed for this project and documented on a kanban board.
 
 Key design considerations:
 - Simple navigation using Streamlit multipage functionality.
@@ -98,20 +156,41 @@ Key design considerations:
 - Manual testing of image uploads and predictions.
 
 ## Known Bugs and Limitations
-indentation error
-forgetting to cntrl s so commit messages were haphazard
-Didn't understand whether to import libraries for each notebook so sometimes they're imported more than once
-Various ways to split data and v confusing 
-TensorFlow not downloading - windows error due to vs code Enable Long Paths on Windows
-Reloading vscode and being back in my old repo
-is there a difference between !pip and pip
-spelling in normalize/normalise 
-didn't import layers
-saved at h5 changed to keras
-removing large files added to gitignore
+
+During development, a number of challenges and limitations were encountered:  
+
+- **Container width**: Fixed by adding `use_container_width=True`.  
+- **Undefined `probs`**: Solved by setting it to `None` (seems to be a Streamlit quirk).  
+- **Image size mismatch**: Standardised uploads to (256, 256, 3).  
+- **Indentation errors**: Python being picky — fixed as I tested.  
+- **Forgot to save before commits**: A few messy commit messages because of this - see,s to be a VS code fave 
+- **Library imports**: Sometimes repeated across notebooks. Didn’t break anything, just untidy.  
+- **Data splitting**: Tried a few methods before sticking with a consistent approach.  
+- **TensorFlow install**: Wouldn’t install on Windows until I enabled long paths in VS Code.  
+- **Repo confusion**: VS Code sometimes reopened an old repo.  
+- **Pip vs !pip**: Got caught out a couple of times switching between terminal and notebooks.  
+- **Spelling mistakes**: e.g., *normalize* vs *normalise*.  
+- **Model saving**: Started with `.h5`, moved to Keras’ native format for stability.  
+- **Large files**: Accidentally committed some, later fixed with `.gitignore`
+
+These challenges provided valuable (if sometimes frusrtating) learning opportunities and do not prevent the app from functioning 
+
 
 ## Further Improvements
 
+There are several areas where this project could be extended or improved in the future:
+- **Data Augmentation:** Apply techniques such as rotation, flipping, and zooming to increase dataset variability and reduce overfitting.
+- **Larger Models:** Experiment with more advanced architectures such as ResNet or EfficientNet to potentially improve accuracy.
+- **Additional Crops:** Extend the model to detect powdery mildew (or other diseases) in crops beyond cherries, making it more useful to Farmy & Foods.
+- **Mobile Deployment:** Develop a lightweight mobile version of the model so farmers can take photos of leaves in the field and receive instant predictions.
+
+
+## Conclusion
+This project set out to build a system capable of distinguishing between healthy cherry leaves and those infected with powdery mildew. By training a Convolutional Neural Network (CNN) on the provided dataset, the model achieved a high level of accuracy, correctly classifying most test images.  
+
+The results show that the model is effective at addressing the client’s main requirement: reducing the need for manual inspection and saving time across large cherry plantations. While the model is not perfect and may benefit from more training data or augmentation, it demonstrates that predictive analytics can be successfully applied to this agricultural challenge.  
+
+In summary, the machine learning pipeline was successful in meeting the project goals, and it provides a strong foundation for further development and deployment
 
 ## Deployment
 
