@@ -11,6 +11,8 @@ DATA_ROOT = Path("inputs/dataset")
 
 def show():
     st.header("Visualise Dataset")
+    st.markdown (""" Choose which dataset you would like to analyse
+    """)
 
     try:
         split = st.selectbox("Dataset split", ["train", "val", "test"])
@@ -29,6 +31,14 @@ def show():
         ax.bar(list(counts.keys()), list(counts.values()))
         ax.set_ylabel("# images")
         st.pyplot(fig)
+
+        st.markdown(
+        """
+        **Graph: distribution of images per class in the selected dataset split.**  
+        This chart shows whether the dataset is balanced between *healthy* and *powdery mildew* leaves.  
+        Balanced data helps the model learn fairly, while imbalance could cause biased predictions.
+        """
+)
 
         st.subheader("Sample images")
         cls = st.selectbox("Class", CLASS_NAMES, key="vis_cls")
@@ -52,6 +62,14 @@ def show():
     except Exception as e:
         st.error("Error while rendering visualiser page.")
         st.exception(e)
+
+    st.markdown(
+    """
+    **Figure: Sample images from the selected class.**  
+    These examples illustrate the visual appearance of cherry leaves.  
+    Healthy leaves typically have uniform green color, while powdery mildew leaves show white fungal patches.
+    """
+    )
 
     st.subheader("Analysis and Conclusions")
 
