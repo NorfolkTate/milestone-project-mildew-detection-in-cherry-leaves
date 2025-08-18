@@ -3,6 +3,8 @@ from typing import Iterable, Tuple
 import numpy as np
 from PIL import Image
 
+DATA_ROOT = Path("inputs/dataset/dataset_mini")
+
 def load_image_file(file) -> np.ndarray:
     return np.array(Image.open(file).convert("RGB"))
 

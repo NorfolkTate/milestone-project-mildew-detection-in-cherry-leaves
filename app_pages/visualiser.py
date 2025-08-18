@@ -4,8 +4,8 @@ import numpy as np
 import streamlit as st
 import matplotlib.pyplot as plt
 
+from src.data_management import iter_image_paths, DATA_ROOT
 from src.model_management import CLASS_NAMES
-from src.data_management import iter_image_paths, load_image_path
 
 DATA_ROOT = Path("inputs/dataset")
 
