@@ -218,7 +218,7 @@ As a ML model capable of distinguishing between healthy and diseased leaves, I w
 
 ### Heroku
 
-- The App live link is: `https://YOUR_APP_NAME.herokuapp.com/`
+- The App live link is: `https://cherry-leaves-project-5-fb2514c76cd1.herokuapp.com//`
 - The project was deployed to Heroku using the following steps
 
 1. Log in to Heroku and create an App
