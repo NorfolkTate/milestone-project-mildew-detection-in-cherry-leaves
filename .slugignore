@@ -3,8 +3,12 @@ __pycache__/
 .DS_Store
 *.ipynb_checkpoints/
 venv/
-outputs/images/
-inputs/dataset/raw/
-inputs/dataset/train/
-inputs/dataset/val/
-inputs/dataset/test/
+
+outputs/images/*
+!outputs/models/**
+
+inputs/dataset/raw/**
+inputs/dataset/train/**
+inputs/dataset/val/**
+inputs/dataset/test/**
+!inputs/dataset/dataset_mini/**
