@@ -61,7 +61,7 @@ def show():
 
         st.subheader("Sample images")
         cls = st.selectbox("Class", CLASS_NAMES, key="vis_cls")
-        n = st.slider("How many samples?", 4, 20, 8, step=4)
+        n = st.slider("How many samples?", 4, 10, 8, step=4)
 
         cls_dir = split_dir / cls
         paths = list(iter_image_paths(cls_dir)) if cls_dir.exists() else []

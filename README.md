@@ -150,15 +150,36 @@ Key design considerations:
 - Shows final evaluation metrics on test data.
 - Discusses observed overfitting and potential reasons.
 
+### Handling Missing Training History
+
+The dashboard’s Model Performance page depends on the file  
+outputs/models/training_history.pkl. In some cases, this file may not be
+available during deployment (for example, due to storage limits on Heroku).
+
+To ensure the page always renders, I have included a sythetic fallback option
+- If the file is missing, a set of dummy metrics are generated with `numpy`.
+- These values are designed to closely mimic the actual model’s behaviour, where
+  training accuracy converged to ~100% and both training/validation loss
+  decreased to near zero.
+- This ensures the graph shown in the app reflects the *pattern of the real
+  model* without misleading the user — it is clearly documented as a fallback.
+
+This approach was inspired by the need to keep the dashboard functional for
+assessment, while still being transparent about the source of the numbers.
+
+
 ## Testing
 - All notebooks were re-run sequentially to ensure reproducibility.
 - Streamlit app tested locally via streamlit run app.py.
-- Manual testing of image uploads and predictions.
+- Manual testing of image uploads and predictions
+- The app currently accepts picture of anything and makes a high confidence decsision about them. More development could fix this issue.
 
 ## Known Bugs and Limitations
 
 During development, a number of challenges and limitations were encountered:  
 
+- **
+- **Dataset path issue**: After creating a mini dataset to deal with Heroku's data limits, my app had trouble finsing the new dataset. Now checks multiple paths (still not convinced!)
 - **Container width**: Fixed by adding `use_container_width=True`.  
 - **Undefined `probs`**: Solved by setting it to `None` (seems to be a Streamlit quirk).  
 - **Image size mismatch**: Standardised uploads to (256, 256, 3).  
@@ -179,6 +200,7 @@ These challenges provided valuable (if sometimes frusrtating) learning opportuni
 ## Further Improvements
 
 There are several areas where this project could be extended or improved in the future:
+- **Only Accepting Leaf Images:** The app will currently threat any photo of anything as a leaf
 - **Data Augmentation:** Apply techniques such as rotation, flipping, and zooming to increase dataset variability and reduce overfitting.
 - **Larger Models:** Experiment with more advanced architectures such as ResNet or EfficientNet to potentially improve accuracy.
 - **Additional Crops:** Extend the model to detect powdery mildew (or other diseases) in crops beyond cherries, making it more useful to Farmy & Foods.
@@ -188,9 +210,9 @@ There are several areas where this project could be extended or improved in the 
 ## Conclusion
 This project set out to build a system capable of distinguishing between healthy cherry leaves and those infected with powdery mildew. By training a Convolutional Neural Network (CNN) on the provided dataset, the model achieved a high level of accuracy, correctly classifying most test images.  
 
-The results show that the model is effective at addressing the client’s main requirement: reducing the need for manual inspection and saving time across large cherry plantations. While the model is not perfect and may benefit from more training data or augmentation, it demonstrates that predictive analytics can be successfully applied to this agricultural challenge.  
+As a learning project and meeting the LOs, I would say it's very succesful. The pipeline is effective, the model is built and the business case is met.
 
-In summary, the machine learning pipeline was successful in meeting the project goals, and it provides a strong foundation for further development and deployment
+As a ML model capable of distinguishing between healthy and diseased leaves, I would say it needs further development. The model is overfitting and falsely confident. It requires further development to be statistically significant and is not yet ready to be used with a high degree of confidence.S
 
 ## Deployment
 

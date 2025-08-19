@@ -10,13 +10,29 @@ from src.model_management import load_model_cached, CLASS_NAMES
 def show():
     st.header("Model Performance")
 
-    history_path = Path("outputs/models/training_history.pkl")
-    if not history_path.exists():
-        st.error("No training history found. Please ensure 'outputs/models/training_history.pkl' exists.")
-        return
+    # history_path = Path("outputs/models/training_history.pkl")
+    # if not history_path.exists():
+    #     st.error("No training history found. Please ensure 'outputs/models/training_history.pkl' exists.")
+    #     return
 
-    with open(history_path, "rb") as f: # code inspired by python documentation and geeks and geeks and ref. in readme
-        history = pickle.load(f)
+    # with open(history_path, "rb") as f: # code inspired by python documentation and geeks and geeks and ref. in readme
+    #     history = pickle.load(f)
+
+    history_path = Path("outputs/models/training_history.pkl")
+    if history_path.exists():
+        with open(history_path, "rb") as f:  # code inspired by python documentation and geeks and geeks and ref. in readme
+            history = pickle.load(f)
+    else:
+        # if the history doesn't load, a like for like graph based on my model will be shown as a fall back
+        st.info("Showing synthetic demo data (training history file not found)")
+
+        epochs = 10
+        history = {
+            "accuracy": list(np.linspace(0.95, 1.0, epochs)),
+            "val_accuracy": [1.0] * epochs,                    
+            "loss": list(np.linspace(0.1, 0.01, epochs)),          
+            "val_loss": list(np.linspace(0.05, 0.005, epochs)),     
+        }
 
     fig, axes = plt.subplots(1, 2, figsize=(12, 4))
 
