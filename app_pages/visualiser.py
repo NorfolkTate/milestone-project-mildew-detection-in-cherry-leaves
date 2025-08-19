@@ -7,22 +7,40 @@ import matplotlib.pyplot as plt
 from src.data_management import iter_image_paths, DATA_ROOT
 from src.model_management import CLASS_NAMES
 
-DATA_ROOT = Path("inputs/dataset")
+# APP_ROOT = Path(__file__).resolve().parents[1]
+
+# CANDIDATES = [
+#     APP_ROOT / "inputs" / "dataset" / "dataset_mini",
+#     APP_ROOT / "inputs" / "dataset",
+# ]
+# for cand in CANDIDATES:
+#     if cand.exists():
+#         DATA_ROOT = cand
+#         break
+# else:
+#     DATA_ROOT = CANDIDATES[0]
 
 def show():
     st.header("Visualise Dataset")
     st.markdown (""" Choose which dataset you would like to analyse
     """)
 
+    # st.caption(f"DATA_ROOT = {DATA_ROOT}")
+    # try:
+    #     st.caption(f"Exists: {DATA_ROOT.exists()} · Subfolders: {[p.name for p in DATA_ROOT.iterdir()]}")
+    # except Exception:
+    #     st.caption("DATA_ROOT not readable")
+
+
+    split = st.selectbox("Dataset split", ["train", "val", "test"], key="vis_split")
+    split_dir = DATA_ROOT / split
+    # st.caption(f"Split dir: {split_dir} · Exists: {split_dir.exists()}")
+    if not split_dir.exists():
+        st.error(f"Split folder not found: {split_dir}")
+        return
+
     try:
-        split = st.selectbox("Dataset split", ["train", "val", "test"])
-        split_dir = DATA_ROOT / split
-
-        if not split_dir.exists():
-            st.error(f"Split foldr not found: {split_dir}")
-            return
-
-        counts = {}
+        counts = {cls: 0 for cls in CLASS_NAMES}
         for cls in CLASS_NAMES:
             folder = split_dir / cls
             counts[cls] = sum(1 for _ in iter_image_paths(folder)) if folder.exists() else 0

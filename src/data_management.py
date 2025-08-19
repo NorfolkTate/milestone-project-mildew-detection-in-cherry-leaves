@@ -3,7 +3,20 @@ import numpy as np
 from PIL import Image
 from pathlib import Path
 
-DATA_ROOT = Path("inputs/dataset/dataset_mini")
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+# DATA_ROOT = PROJECT_ROOT / "inputs" / "dataset" / "dataset_mini"
+
+_CANDIDATES = [
+    PROJECT_ROOT / "inputs" / "dataset_mini",          # one of these has t work?
+    PROJECT_ROOT / "inputs" / "dataset" / "dataset_mini",  # second option 
+    PROJECT_ROOT / "inputs" / "dataset",            
+]
+for _cand in _CANDIDATES:
+    if _cand.exists():
+        DATA_ROOT = _cand
+        break
+else:
+    DATA_ROOT = _CANDIDATES[0]
 
 def load_image_file(file) -> np.ndarray:
     return np.array(Image.open(file).convert("RGB"))
